@@ -1,9 +1,40 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-class Database
-class Server
-class User
-class Item
+class Database{
+}
+class Server{
+    String ip
+}
+class User{
+    int id
+    String name
+    String mail.
+}
+class Cart{
+    ArrayList<Item> items
+}
+class Item{
+    int id
+    String name
+    float price
+    String description
+}
+class OrderHistorie{
+    int id
+    int[] itemIds
+}
 
+enum UserAccess {
+    ADMIN
+    CUSTOMER
+}
+
+Database -> Server
+Server *- User
+User <-- Cart
+Cart *- Item
+User *- OrderHistorie
+
+UserAccess --> User
 @enduml
