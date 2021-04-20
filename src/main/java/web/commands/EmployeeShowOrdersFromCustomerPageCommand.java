@@ -22,9 +22,13 @@ public class EmployeeShowOrdersFromCustomerPageCommand extends CommandProtectedP
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
-        String userId = request.getParameter("userId");
+        String userId = request.getParameter("userList");
 
         List<Order> listOfOrdersByUserId = ordersFacade.getOrdersDataByUserId(Integer.parseInt(userId));
+        if (!(listOfOrdersByUserId.size() > 0))
+        {
+            request.setAttribute("error", "Could not receive any orders, perhaps this user has not ordered anything yet.");
+        }
         request.setAttribute("listOfOrdersByUserId", listOfOrdersByUserId);
         return pageToShow;
     }
