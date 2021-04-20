@@ -14,6 +14,6 @@ public class ShoppingCartCommand extends CommandProtectedPage
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        return super.execute(request, response);
+        return pageToShow;
     }
 }
