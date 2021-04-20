@@ -70,6 +70,12 @@
                         <a type="button" class="btn btn-sm  btn-outline-secondary"
                            href="${pageContext.request.contextPath}/fc/registerpage">Sign up</a>
                     </c:if>
+
+                    <c:if test="${sessionScope.user.role == 'customer'}">
+
+                        <img name="shoppingCart" src="${pageContext.request.contextPath}/resources/images/shopping_cart.png" class="img-thumbnail" href="${pageContext.request.contextPath}/fc/shoppingcart"/>
+                    </c:if>
+
                 </c:if>
             </div>
         </div>
