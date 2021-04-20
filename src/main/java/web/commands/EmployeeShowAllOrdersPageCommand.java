@@ -8,19 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-public class ShowAllOrdersPageCommand extends CommandProtectedPage
+public class EmployeeShowAllOrdersPageCommand extends CommandProtectedPage
 {
     OrdersFacade ordersFacade;
 
-    public ShowAllOrdersPageCommand(String pageToShow, String role) {
+    public EmployeeShowAllOrdersPageCommand(String pageToShow, String role) {
         super(pageToShow, role);
         this.ordersFacade = new OrdersFacade(database);
     }
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
-        List<Order> allOrdersList = ordersFacade.getAllOrders();
-        request.setAttribute("allOrdersList", allOrdersList);
+        List<Order> listAllOrders = ordersFacade.getAllOrders();
+        request.setAttribute("listAllOrders", listAllOrders);
         return pageToShow;
     }
 }
