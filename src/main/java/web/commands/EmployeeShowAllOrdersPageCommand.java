@@ -20,6 +20,10 @@ public class EmployeeShowAllOrdersPageCommand extends CommandProtectedPage
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         List<Order> listAllOrders = ordersFacade.getAllOrders();
+        if (!(listAllOrders.size() > 0))
+        {
+            request.setAttribute("error", "Could not receive any orders, perhaps no user at all has ordered anything yet.");
+        }
         request.setAttribute("listAllOrders", listAllOrders);
         return pageToShow;
     }
