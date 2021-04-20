@@ -175,7 +175,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'robin@gotham.com','batman','customer'),(2,'joker@gotham.com','haha','admin');
+INSERT INTO `user` VALUES (1,'robin@gotham.com','batman','customer'),(2,'joker@gotham.com','haha','employee');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
