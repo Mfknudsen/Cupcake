@@ -2,6 +2,15 @@ package business.entities;
 
 public class User
 {
+    public User(int id, String email, String password, String role, float balance)
+    {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.balance = balance;
+    }
+
     public User(String email, String password, String role)
     {
         this.email = email;
@@ -9,10 +18,17 @@ public class User
         this.role = role;
     }
 
-    private int id; // just used to demo retrieval of autogen keys in UserMapper
+    public User(int id, String email)
+    {
+        this.id = id;
+        this.email = email;
+    }
+
+    private int id;
     private String email;
     private String password; // Should be hashed and secured
     private String role;
+    private float balance;
 
     public String getEmail()
     {
