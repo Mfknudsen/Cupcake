@@ -9,8 +9,41 @@
     <jsp:attribute name="footer">
     </jsp:attribute>
     <jsp:body>
-        <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as a EMPLOYEE of our wonderful site.
+
+        <div class="row">
+            <div class="col-sm-4"></div>
+        </div>
+
+        <div class="col-sm-4">
+            <h1>Hello ${sessionScope.email} </h1>
+            You are now logged in as a EMPLOYEE of our wonderful site.
+
+            <c:if test="${requestScope.listAllOrders.size() > 0 }">
+                <table class="table table-striped">
+                    <thead><th>Order number</th><th>Username</th><th>Date</th><th></th></thead>
+                    <c:forEach var="user" items="${requestScope.listAllOrders}">
+                        <tr>
+                            <td>${user.id}</td>
+                            <td>${user.userName}</td>
+                            <td>${user.date}</td>
+                            <td>
+                                <form method="post" action="${pageContext.request.contextPath}/fc/showcustomerorders">
+                                    <button name ="userList" type="submit" class="btn btn-outline-dark py-0 border-0" value="${user.id}">Vis</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </c:if>
+
+        </div>
+
+        <div class="col-sm-4"></div>
+
+        <c:if test="${not empty requestScope.error}">
+            <br>
+            <p style="color:red; font-size: large">${requestScope.error}</p>
+        </c:if>
 
     </jsp:body>
 </t:genericpage>
