@@ -32,8 +32,18 @@
         <div class="d-flex align-items-center py-2 px-2 my-2 bg-gray container-fluid">
 
             <nav class="my-2 my-md-0 me-md-3">
-                <a class="p-2 text-dark" href="#">Ordrer</a>
-                <a class="p-2 text-dark" href="#">Kunder</a>
+                <c:if test="${sessionScope.user != null}">
+
+                    <c:if test="${sessionScope.user.role == 'customer'}">
+                        <a class="p-2 text-dark" href="#">Mine ordrer</a>
+                    </c:if>
+
+                    <c:if test="${sessionScope.user.role == 'employee'}">
+                        <a class="p-2 text-dark" href="#">Ordrer</a>
+                        <a class="p-2 text-dark" href="#">Kunder</a>
+                    </c:if>
+
+                </c:if>
             </nav>
 
             <div class="me-md-auto"></div>
