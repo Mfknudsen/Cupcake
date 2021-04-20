@@ -29,8 +29,8 @@ public abstract class Command
         commands.put("customerpage", new CommandProtectedPage("customerpage", "customer"));
         commands.put("employeepage", new CommandProtectedPage("employeepage", "employee"));
         commands.put("shoppingcart", new ShoppingCartCommand("shoppingCartPage", "customer"));
-        commands.put("showallorders", new EmployeeShowAllOrdersPageCommand("employeeShowAllOrdersPage", "employee"));
-        commands.put("showcustomerorders", new EmployeeShowOrdersFromCustomerPageCommand("employeeShowOrdersFromCustomerPage", "employee"));
+        commands.put("showallorders", new EmployeeShowAllOrdersPageCommand("employeeshowallorderspage", "employee"));
+        commands.put("showcustomerorders", new EmployeeShowOrdersFromCustomerPageCommand("employeeshowordersfromcustomerpage", "employee"));
     }
 
     public static Command fromPath(
