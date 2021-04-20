@@ -10,25 +10,30 @@
     </jsp:attribute>
     <jsp:body>
         <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as a EMPLOYEE of our wonderful site.
+        <p>You are now logged in as a EMPLOYEE of our wonderful site.</p>
 
-        <form method="post" action="${pageContext.request.contextPath}/fc/showallorders">
-            <button type="submit" class="btn-primary">Show all orders</button>
-        </form>
+        <div>
+            <form method="post" action="${pageContext.request.contextPath}/fc/showallorders">
+                <button type="submit" class="btn btn-primary">Show all orders</button>
+            </form>
+        </div>
 
-        <form method="post" action="${pageContext.request.contextPath}/fc/showcustomerorders">
+        <div>
+            <form method="post" action="${pageContext.request.contextPath}/fc/showcustomerorders">
 
-            <div class="form-group mt-2">
-                <label class="form-check-label" for="userList">Select user: </label>
-                <select name="userList" id="userList" class="form-control">
-                    <c:forEach var="user" items="${applicationScope.userList}">
-                        <option value="${user.id}">${user.email}</option>
-                    </c:forEach>
-                </select>
-            </div>
+                <div class="form-group mt-2">
+                    <label class="form-check-label" for="userList">Select user: </label>
 
-            <button type="submit" class="btn-primary">Show all orders</button>
-        </form>
+                    <select name="userList" id="userList" class="form-select" style="width: auto">
+                        <c:forEach var="user" items="${applicationScope.userList}">
+                            <option value="${user.id}">${user.email}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-2">Show all orders</button>
+            </form>
+        </div>
 
     </jsp:body>
 </t:genericpage>
