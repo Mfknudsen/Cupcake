@@ -18,32 +18,6 @@ USE `cupcake`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `balance`
---
-
-DROP TABLE IF EXISTS `balance`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `balance` (
-  `user_id` int NOT NULL,
-  `amount` float NOT NULL DEFAULT '0',
-  PRIMARY KEY (`user_id`),
-  KEY `fk_balance_user1_idx` (`user_id`),
-  CONSTRAINT `fk_balance_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `balance`
---
-
-LOCK TABLES `balance` WRITE;
-/*!40000 ALTER TABLE `balance` DISABLE KEYS */;
-INSERT INTO `balance` VALUES (1,400),(2,550);
-/*!40000 ALTER TABLE `balance` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `cupcake`
 --
 
@@ -164,6 +138,7 @@ CREATE TABLE `user` (
   `email` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `role` varchar(45) NOT NULL DEFAULT 'customer',
+  `balance` varchar(45) NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
@@ -175,7 +150,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'robin@gotham.com','batman','customer'),(2,'joker@gotham.com','haha','employee');
+INSERT INTO `user` VALUES (1,'robin@gotham.com','batman','customer','0'),(2,'joker@gotham.com','haha','employee','0');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -188,4 +163,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-16 12:08:31
+-- Dump completed on 2021-04-20 12:22:00
