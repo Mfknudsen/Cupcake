@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-public class EmployeeShowAllOrdersPageCommand extends CommandProtectedPage
+public class ShowAllOrdersCommand extends CommandProtectedPage
 {
     OrdersFacade ordersFacade;
 
-    public EmployeeShowAllOrdersPageCommand(String pageToShow, String role) {
+    public ShowAllOrdersCommand(String pageToShow, String role) {
         super(pageToShow, role);
         this.ordersFacade = new OrdersFacade(database);
     }
