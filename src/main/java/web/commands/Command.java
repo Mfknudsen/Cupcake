@@ -31,6 +31,7 @@ public abstract class Command
         commands.put("shoppingcart", new ShoppingCartCommand("shoppingCartPage", "customer"));
         commands.put("showallorders", new EmployeeShowAllOrdersPageCommand("employeeshowallorderspage", "employee"));
         commands.put("showcustomerorders", new EmployeeShowOrdersFromCustomerPageCommand("employeeshowordersfromcustomerpage", "employee"));
+        commands.put("showcustomerorderbyid", new EmployeeShowOrderByIdCommand("employeeshoworderbyid", "employee"));
     }
 
     public static Command fromPath(
