@@ -1,11 +1,13 @@
 package web.commands;
 
+import business.entities.Order;
 import business.exceptions.UserException;
 import business.services.OrdersFacade;
 import business.services.UserFacade;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 public class EmployeeShowOrderByIdCommand extends CommandProtectedPage
 {
@@ -20,9 +22,10 @@ public class EmployeeShowOrderByIdCommand extends CommandProtectedPage
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
-        String userId = request.getParameter("userList");
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        int orderId = Integer.parseInt(request.getParameter("orderId"));
 
-
+        List<Order> listOrderByOrderId = ordersFacade.getOrder(userId, orderId);
         return pageToShow;
     }
 }

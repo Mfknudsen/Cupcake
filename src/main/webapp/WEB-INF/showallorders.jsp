@@ -21,17 +21,18 @@
             <c:if test="${requestScope.listAllOrders.size() > 0 }">
                 <table class="table table-striped">
                     <thead><th>Order number</th><th>Username</th><th>Date</th><th></th></thead>
-                    <c:forEach var="user" items="${requestScope.listAllOrders}">
-                        <tr>
-                            <td>${user.id}</td>
-                            <td>${user.userName}</td>
-                            <td>${user.date}</td>
-                            <td>
-                                <form method="post" action="${pageContext.request.contextPath}/fc/showcustomerorders">
-                                    <button name ="userList" type="submit" class="btn btn-outline-dark py-0 border-0" value="${user.id}">Vis</button>
-                                </form>
-                            </td>
-                        </tr>
+                    <c:forEach var="order" items="${requestScope.listAllOrders}">
+                        <form method="post" action="${pageContext.request.contextPath}/fc/showcustomerordersbyid"> <%-- show all customer orders --%>
+                            <tr name="userId" value="${order.userId}">
+                                <td name="orderId" value="${order.orderId}">${order.orderId}</td>
+                                <td>${order.userName}</td>
+                                <td>${order.date}</td>
+                                <td>
+                                    <%-- show order by id from customer --%>
+                                    <button type="submit" class="btn btn-outline-dark py-0 border-0">Vis</button>
+                                </td>
+                            </tr>
+                        </form>
                     </c:forEach>
                 </table>
             </c:if>

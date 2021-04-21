@@ -18,16 +18,16 @@
             <h1>Hello ${sessionScope.email} </h1>
             You are now logged in as a EMPLOYEE of our wonderful site.
 
-            <c:if test="${requestScope.listOfOrdersByUserId.size() > 0 }">
+            <c:if test="${requestScope.ordersFromUser.size() > 0 }">
                 <table class="table table-striped">
                     <thead><th>Order number</th><th>Topping</th><th>Bottom</th><th>Price</th><th>Date</th></thead>
-                    <c:forEach var="user" items="${requestScope.listOfOrdersByUserId}">
+                    <c:forEach var="order" items="${requestScope.ordersFromUser}">
                         <tr>
-                            <td>${user.id}</td>
-                            <td>${user.topping}</td>
-                            <td>${user.bottom}</td>
-                            <td>${user.price}</td>
-                            <td>${user.date}</td>
+                            <td>${order.orderId}</td>
+                            <td>${order.topping}</td>
+                            <td>${order.bottom}</td>
+                            <td>${order.price}</td>
+                            <td>${order.date}</td>
                         </tr>
                     </c:forEach>
                 </table>
