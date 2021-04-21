@@ -4,31 +4,40 @@ import java.util.Date;
 
 public class Order
 {
-    private int id, topping, bottom;
+    private int userId ,orderId, topping, bottom;
     private float price;
     private String userName;
     private Date date;
 
-    public Order(int id, String userName, Date date) {
-       this.id = id;
+    public Order(int userId, int orderId, String userName, Date date) {
+       this.userId = userId;
+       this.orderId = orderId;
        this.userName = userName;
        this.date = date;
     }
 
-    public Order(int id, int topping, int bottom, float price, Date date) {
-       this.id = id;
+    public Order(int orderId, int topping, int bottom, float price, Date date) {
+       this.orderId = orderId;
        this.topping = topping;
        this.bottom = bottom;
        this.price = price;
        this.date = date;
     }
 
-    public int getId() {
-        return id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public int getTopping() {
