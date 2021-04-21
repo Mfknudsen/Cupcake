@@ -13,18 +13,18 @@
         <p>You are now logged in as a EMPLOYEE of our wonderful site.</p>
 
         <div>
-            <form method="post" action="${pageContext.request.contextPath}/fc/showallorders">
+            <form method="post" action="${pageContext.request.contextPath}/fc/allorders">
                 <button type="submit" class="btn btn-primary">Show all orders</button>
             </form>
         </div>
 
         <div>
-            <form method="post" action="${pageContext.request.contextPath}/fc/showcustomerorders">
+            <form method="post" action="${pageContext.request.contextPath}/fc/ordersfromcustomer">
 
                 <div class="form-group mt-2">
-                    <label class="form-check-label" for="userList">Select user: </label>
+                    <label class="form-check-label" for="userId">Select user: </label>
 
-                    <select name="userList" id="userList" class="form-select" style="width: auto">
+                    <select name="userId" id="userId" class="form-select" style="width: auto">
                         <c:forEach var="user" items="${applicationScope.userList}">
                             <option value="${user.id}">${user.email}</option>
                         </c:forEach>
