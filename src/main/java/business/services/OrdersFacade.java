@@ -21,8 +21,12 @@ public class OrdersFacade
         return ordersMapper.getAllOrders();
     }
 
-    public List<Order> getOrdersDataByUserId(int userId) throws UserException
+    public List<Order> getOrders(int userId) throws UserException
     {
-        return ordersMapper.getOrdersDataByUserId(userId);
+        return ordersMapper.getOrders(userId);
+    }
+
+    public List<Order> getOrder(int userId, int orderId) throws UserException {
+        return ordersMapper.getOrder(userId, orderId);
     }
 }
