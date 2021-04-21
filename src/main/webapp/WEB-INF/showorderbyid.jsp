@@ -18,10 +18,10 @@
             <h1>Hello ${sessionScope.email} </h1>
             You are now logged in as a EMPLOYEE of our wonderful site.
 
-            <c:if test="${requestScope.ordersFromUser.size() > 0 }">
+            <c:if test="${requestScope.specificOrder.size() > 0 }">
                 <table class="table table-striped">
                     <thead><th>Order number</th><th>Topping</th><th>Bottom</th><th>Price</th><th>Date</th></thead>
-                    <c:forEach var="order" items="${requestScope.ordersFromUser}">
+                    <c:forEach var="order" items="${requestScope.specificOrder}">
                         <tr>
                             <td>${order.orderId}</td>
                             <td>${order.topping}</td>

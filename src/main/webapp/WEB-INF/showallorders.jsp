@@ -22,9 +22,11 @@
                 <table class="table table-striped">
                     <thead><th>Order number</th><th>Username</th><th>Date</th><th></th></thead>
                     <c:forEach var="order" items="${requestScope.listAllOrders}">
-                        <form method="post" action="${pageContext.request.contextPath}/fc/showcustomerordersbyid"> <%-- show all customer orders --%>
-                            <tr name="userId" value="${order.userId}">
-                                <td name="orderId" value="${order.orderId}">${order.orderId}</td>
+                        <form method="post" action="${pageContext.request.contextPath}/fc/showcustomerorderbyid"> <%-- show all customer orders --%>
+                            <input type="hidden" name="userId" value="${order.userId}"/>
+                            <input type="hidden" name="orderId" value="${order.orderId}"/>
+                            <tr>
+                                <td>${order.orderId}</td>
                                 <td>${order.userName}</td>
                                 <td>${order.date}</td>
                                 <td>
