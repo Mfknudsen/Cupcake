@@ -6,7 +6,6 @@ import java.sql.SQLException;
 
 public class Database
 {
-    private Connection connection;
     private final String USER;
     private final String PASSWORD;
     private final String URL;
@@ -31,8 +30,6 @@ public class Database
 
     public Connection connect() throws SQLException
     {
-        Connection connection = null;
-        connection = DriverManager.getConnection(URL, USER, PASSWORD);
-        return connection;
+        return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 }

@@ -81,7 +81,7 @@
         </div>
     </div>
 
-    <div id="body" class="bg-gray rounded d-flex container-fluid" style="height: 100vh;">
+    <div id="body" class="bg-gray rounded container-fluid" style="height: 100vh;">
         <jsp:doBody/>
     </div>
 

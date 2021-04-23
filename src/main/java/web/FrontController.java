@@ -1,7 +1,9 @@
 package web;
 
 import business.exceptions.UserException;
+import business.persistence.CustomerMapper;
 import business.persistence.Database;
+import business.persistence.UserMapper;
 import web.commands.*;
 
 import java.io.IOException;
@@ -39,6 +41,14 @@ public class FrontController extends HttpServlet
         }
 
         // Initialize whatever global datastructures needed here:
+
+        try {
+           getServletContext().setAttribute
+                   ("userList", new CustomerMapper(database)
+                           .getAllCustomers());
+        } catch (UserException e) {
+           Logger.getLogger("web").log(Level.SEVERE, e.getMessage(), e);
+        }
 
     }
 
