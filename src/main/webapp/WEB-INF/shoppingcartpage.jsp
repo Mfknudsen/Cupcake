@@ -13,13 +13,12 @@
         <p>Hello ${sessionScope.email} </p>
         <p>You are now viewing your shopping cart.</p>
         <c:set value="${sessionScope.cart.items}" var="itemsMap"/>
-        <c:set var="total" value="${0}"/>
         <c:if test="${itemsMap.keySet().size() > 0}">
             <table class="table table-striped">
                 <thead>
-                <th>Cupcake</th>
-                <th>Price</th>
-                <th>Quantity</th>
+                <th>Cupcake:</th>
+                <th>Price Per:</th>
+                <th>Quantity:</th>
                 </thead>
                 <c:forEach var="item" items="${itemsMap.keySet()}">
                     <tr>
@@ -29,14 +28,12 @@
                             kr."
                         </td>
                         <td>
-                            <input  id="number" type="number" value="${itemsMap.get(item)}" step="1" min="0" max="99">
-                            <c:set var="total" value="${total + requestScope.get}"/>
+                            <input id="number${item.GetToppingID()+""+item.GetBottomID()}" type="number" value="${itemsMap.get(item)}" step="1" min="0" max="99">
                         </td>
                     </tr>
                 </c:forEach>
             </table>
             <button class="btn btn-primary" type="submit" value="Buy">Buy</button>
-            <p>${total}</p>
         </c:if>
     </jsp:body>
 
