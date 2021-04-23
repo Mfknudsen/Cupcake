@@ -32,6 +32,7 @@ public abstract class Command
         commands.put("allorders", new ShowAllOrdersCommand("showallorders", "employee"));
         commands.put("ordersfromcustomer", new ShowOrdersFromCustomerCommand("showordersfromuser", "employee"));
         commands.put("showcustomerorderbyid", new ShowOrderByIdCommand("showorderbyid", "employee"));
+        commands.put("addbalance", new AddBalanceCommand("employeepage", "employee"));
     }
 
     public static Command fromPath(
