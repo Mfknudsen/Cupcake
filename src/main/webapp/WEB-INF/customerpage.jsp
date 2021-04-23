@@ -10,70 +10,82 @@
     </jsp:attribute>
 
     <jsp:body>
+        <h1>Hello ${sessionScope.email} </h1>
+        <p>You are now logged in as a Customer of our wonderful site. <br>
+            Role: ${sessionScope.role}</p>
 
-        <div>
 
-            <h1>Hello ${sessionScope.email} </h1>
-            <p>You are now logged in as a Customer of our wonderful site. <br>
-                Role: ${sessionScope.role}</p>
+        <form method="post" action="${pageContext.request.contextPath}/fc/shoppingcart">
 
-            <div id="Bottom" role="application" style="float:left; padding:15px;
+            <div class="form-group mt-2">
+                <label class="form-check-label" for="bottom">Select bottom: </label>
 
-            <form action="shoppingCartPage.jsp">
+                <select name="bottom" id="bottom" class="form-select bottom" style="width: auto" onchange="setBottomValue(this)">
+                    <option value="">-- Select --</option>
+                    <c:forEach var="bottom" items="${applicationScope.bottoms}">
+                        <option value="${bottom.bottomId}" data-price="${bottom.price}">${bottom.name}: ${bottom.price}</option>
+                    </c:forEach>
+                </select>
+            </div>
 
-            <label for="selectBottom">Select a Bottom</label>
-            <select name="selectBottom" id="selectBottom">
-                <option value="Chocolate">Chocolate</option>
-                <option value="Vanilla">Vanilla</option>
-                <option value="Nutmeg">Nutmeg</option>
-                <option value="Pistacio">Pistacio</option>
-                <option value="Almond">Almond</option>
-            </select>
+            <div class="form-group mt-2">
+                <label class="form-check-label" for="topping">Select topping: </label>
 
-                <%--                        <button type="button">Add to cart</button>--%>
-            </form>
-        </div>
+                <select name="topping" id="topping" class="form-select" style="width: auto" onchange="setToppingValue(this)">
+                    <option value="">-- Select --</option>
+                    <c:forEach var="topping" items="${applicationScope.toppings}">
+                        <option value="${topping.toppingId}" data-price="${topping.price}">${topping.name}: ${topping.price}</option>
+                    </c:forEach>
+                </select>
+            </div>
 
-        <div id="Topping" role="application" style="float:left;padding:15px;
+            <div>
+                <label class="form-check-label" for="quantity">Quantity: </label>
+                <input onchange="setQuantityValue(this)" type="text" name="quantity" id="quantity" class="form-control" style="width: 100px">
+            </div>
 
-        <form action="shoppingCartPage.jsp">
+            <div>
+                <label class="form-check-label" for="price">Price: </label>
+                <input type="text" name="price" id="price" class="form-control" style="width: 100px" disabled>
+            </div>
 
-        <label for="selectTopping">Select a Topping</label>
-        <select name="selectTopping" id="selectTopping">
-            <option value="Chocolate">Chocolate</option>
-            <option value="Blueberry">Blueberry</option>
-            <option value="Rasberry">Rasberry</option>
-            <option value="Crispy">Crispy</option>
-            <option value="Strawberry">Strawberry</option>
-            <option value="Rum/Raisin">Rum/Raisin</option>
-            <option value="Orange">Orange</option>
-            <option value="Lemon">Lemon</option>
-            <option value="Blue cheese">Blue cheese</option>
-        </select>
-        <%--                        <button type="button">Add to cart</button>--%>
+            <button type="submit" class="btn btn-primary mt-2">Add to cart</button>
         </form>
-        </div>
 
-        <div id="Quantity" role="application" style="float:left;padding:15px;
+        <script type="text/javascript">
 
-        <form action="shoppingCartPage.jsp">
+            var bottomValue;
+            var toppingValue;
+            var quantityValue;
 
-        <label for ="Quantity">Quantity</label>
-        <input name="Quantity" id="Quantity" type="number">
 
-        </div>
+            function setBottomValue(bottom)
+            {
+                bottomValue = parseFloat(bottom.options[bottom.selectedIndex].getAttribute('data-price'));
+                executePrice();
+            }
 
-        <div id="Price" role="application" style="float:left;padding:15px;
-        <form action="shoppingCartPage.jsp">
+            function setToppingValue(topping)
+            {
+                toppingValue  = parseFloat(topping.options[topping.selectedIndex].getAttribute('data-price'));
+                executePrice();
+            }
 
-        <p>Price: N/A</p>
+            function setQuantityValue(quantity)
+            {
+                quantityValue = parseInt(quantity.value);
+                executePrice();
+            }
 
-        </div>
 
-        <br><br>
-        <button type="button">Add to cart</button>
+            function executePrice()
+            {
+                let sum;
+                sum = String((bottomValue + toppingValue) * (quantityValue));
 
-        </div>
+                document.getElementById("price").setAttribute('value', sum);
+            }
+        </script>
 
     </jsp:body>
 
