@@ -38,8 +38,7 @@ public class LoginCommand extends CommandUnprotectedPage {
 
             Cart cart = new Cart();
             cart.EditItems(new Item(Topping.Bluecheese, Bottom.Almond), 3);
-            cart.EditItems(new Item(Topping.Blueberry, Bottom.Nutmeg), 5);
-            cart.EditItems(new Item(Topping.Bluecheese, Bottom.Chhocolate), 1);
+            cart.EditItems(new Item(Topping.Chocolate, Bottom.Nutmeg), 5);
             session.setAttribute("cart", cart);
 
             String pageToShow = user.getRole() + "page";

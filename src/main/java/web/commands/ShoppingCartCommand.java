@@ -21,12 +21,6 @@ public class ShoppingCartCommand extends CommandUnprotectedPage
 
         Cart cart = (Cart) request.getAttribute("cart");
 
-        for (Item i: cart.getItems().keySet()) {
-            int count = Integer.parseInt(request.getParameter("number" +i.GetToppingID()+""+i.GetBottomID()));
-            cart.EditItems(i, count);
-        }
-
-        session.setAttribute("cart", cart);
 
         return pageToShow;
     }
