@@ -1,33 +1,16 @@
 package business.entities;
 
-import java.util.Date;
-
-public class Cupcake
+public class Cupcake_Bottom
 {
-    private int cupcakeId ,toppingId, bottomId, orderId, quantity;
+    private int bottomId;
+    String name;
+    float price;
 
-    public Cupcake(int cupcakeId, int toppingId, int bottomId, int quantity)
+    public Cupcake_Bottom(int bottomId, String name, float price)
     {
-        this.cupcakeId = cupcakeId;
-        this.toppingId = toppingId;
         this.bottomId = bottomId;
-        this.quantity = quantity;
-    }
-
-    public int getCupcakeId() {
-        return cupcakeId;
-    }
-
-    public void setCupcakeId(int cupcakeId) {
-        this.cupcakeId = cupcakeId;
-    }
-
-    public int getToppingId() {
-        return toppingId;
-    }
-
-    public void setToppingId(int toppingId) {
-        this.toppingId = toppingId;
+        this.name = name;
+        this.price = price;
     }
 
     public int getBottomId() {
@@ -38,19 +21,19 @@ public class Cupcake
         this.bottomId = bottomId;
     }
 
-    public int getOrderId() {
-        return orderId;
+    public String getName() {
+        return name;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public float getPrice() {
+        return price;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setPrice(float price) {
+        this.price = price;
     }
 }

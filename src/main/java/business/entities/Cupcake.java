@@ -2,34 +2,40 @@ package business.entities;
 
 import java.util.Date;
 
-public class Order
+public class Cupcake
 {
-    private int userId ,orderId, topping, bottom;
-    private float price;
-    private String userName;
-    private Date date;
+    private int cupcakeId ,toppingId, bottomId, orderId, quantity;
 
-    public Order(int userId, int orderId, String userName, Date date) {
-       this.userId = userId;
-       this.orderId = orderId;
-       this.userName = userName;
-       this.date = date;
+    public Cupcake(int cupcakeId, int toppingId, int bottomId, int quantity)
+    {
+        this.cupcakeId = cupcakeId;
+        this.toppingId = toppingId;
+        this.bottomId = bottomId;
+        this.quantity = quantity;
     }
 
-    public Order(int orderId, int topping, int bottom, float price, Date date) {
-       this.orderId = orderId;
-       this.topping = topping;
-       this.bottom = bottom;
-       this.price = price;
-       this.date = date;
+    public int getCupcakeId() {
+        return cupcakeId;
     }
 
-    public int getUserId() {
-        return userId;
+    public void setCupcakeId(int cupcakeId) {
+        this.cupcakeId = cupcakeId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public int getToppingId() {
+        return toppingId;
+    }
+
+    public void setToppingId(int toppingId) {
+        this.toppingId = toppingId;
+    }
+
+    public int getBottomId() {
+        return bottomId;
+    }
+
+    public void setBottomId(int bottomId) {
+        this.bottomId = bottomId;
     }
 
     public int getOrderId() {
@@ -40,43 +46,11 @@ public class Order
         this.orderId = orderId;
     }
 
-    public int getTopping() {
-        return topping;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setTopping(int topping) {
-        this.topping = topping;
-    }
-
-    public int getBottom() {
-        return bottom;
-    }
-
-    public void setBottom(int bottom) {
-        this.bottom = bottom;
-    }
-
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
