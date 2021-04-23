@@ -10,9 +10,34 @@
     </jsp:attribute>
 
     <jsp:body>
-        <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as a Customer of our wonderful site.
-        Role: ${sessionScope.role}
+        <p>Hello ${sessionScope.email} </p>
+        <p>You are now viewing your shopping cart.</p>
+        <c:set value="${sessionScope.cart.items}" var="itemsMap"/>
+        <c:set var="total" value="${0}"/>
+        <c:if test="${itemsMap.keySet().size() > 0}">
+            <table class="table table-striped">
+                <thead>
+                <th>Cupcake</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                </thead>
+                <c:forEach var="item" items="${itemsMap.keySet()}">
+                    <tr>
+                        <td>"${item.getTopping()} and ${item.getBottom()}"</td>
+                        <td>
+                            "${(sessionScope.toppingPrices[item.GetToppingID()] + sessionScope.bottomPrices[item.GetBottomID()])}
+                            kr."
+                        </td>
+                        <td>
+                            <input  id="number" type="number" value="${itemsMap.get(item)}" step="1" min="0" max="99">
+                            <c:set var="total" value="${total + requestScope.get}"/>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+            <button class="btn btn-primary" type="submit" value="Buy">Buy</button>
+            <p>${total}</p>
+        </c:if>
     </jsp:body>
 
 </t:genericpage>

@@ -16,4 +16,12 @@ public class Item {
     public int GetBottomID(){
         return bottom.getValue();
     }
+
+    public Topping getTopping() {
+        return topping;
+    }
+
+    public Bottom getBottom() {
+        return bottom;
+    }
 }
