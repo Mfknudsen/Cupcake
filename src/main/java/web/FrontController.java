@@ -1,6 +1,7 @@
 package web;
 
 import business.exceptions.UserException;
+import business.persistence.CupcakeMapper;
 import business.persistence.CustomerMapper;
 import business.persistence.Database;
 import business.persistence.UserMapper;
@@ -19,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "FrontController", urlPatterns = {"/fc/*"})
 public class FrontController extends HttpServlet
 {
-    private final static String USER = "root";
-    private final static String PASSWORD = "Getgood2ke";
+    private final static String USER = "";
+    private final static String PASSWORD = "";
     private final static String URL = "jdbc:mysql://localhost:3306/cupcake?serverTimezone=CET";
 
     public static Database database;
@@ -48,6 +49,22 @@ public class FrontController extends HttpServlet
                            .getAllCustomers());
         } catch (UserException e) {
            Logger.getLogger("web").log(Level.SEVERE, e.getMessage(), e);
+        }
+
+        try {
+            getServletContext().setAttribute
+                    ("toppings", new CupcakeMapper(database)
+                            .getToppings());
+        } catch (UserException e) {
+            Logger.getLogger("web").log(Level.SEVERE, e.getMessage(), e);
+        }
+
+        try {
+            getServletContext().setAttribute
+                    ("bottoms", new CupcakeMapper(database)
+                            .getBottoms());
+        } catch (UserException e) {
+            Logger.getLogger("web").log(Level.SEVERE, e.getMessage(), e);
         }
 
     }
