@@ -4,7 +4,7 @@ import business.exceptions.UserException;
 import business.persistence.CupcakeMapper;
 import business.persistence.CustomerMapper;
 import business.persistence.Database;
-import business.persistence.UserMapper;
+import business.persistence.PriceMapper;
 import web.commands.*;
 
 import java.io.IOException;
@@ -67,6 +67,18 @@ public class FrontController extends HttpServlet
             Logger.getLogger("web").log(Level.SEVERE, e.getMessage(), e);
         }
 
+        try {
+            PriceMapper pm = new PriceMapper(database);
+            getServletContext().setAttribute(
+                    "toppingPrices",
+                    pm.getToppingPrices());
+            getServletContext().setAttribute(
+                    "bottonPrices",
+                    pm.getBottomPrices()
+            );
+        } catch (Exception e){
+            Logger.getLogger("web").log(Level.SEVERE,e.getMessage(),e);
+        }
     }
 
     protected void processRequest(
