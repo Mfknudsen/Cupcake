@@ -26,4 +26,14 @@ public class UserFacade
         return user;
     }
 
+    public int addBalance(float amount, int userId) throws UserException
+    {
+        return userMapper.addBalance(amount, userId);
+    }
+
+    public float getBalance(int userId) throws UserException
+    {
+        return userMapper.getBalance(userId);
+    }
+
 }

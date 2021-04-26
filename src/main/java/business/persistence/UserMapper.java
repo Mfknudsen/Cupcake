@@ -80,4 +80,64 @@ public class UserMapper
         }
     }
 
+    public int addBalance(float amount, int userId) throws UserException
+    {
+        try (Connection connection = database.connect())
+        {
+            String sql = "UPDATE `user` AS `u` " +
+                    "SET `u`.`balance` = `u`.`balance` + (?) " +
+                    "WHERE `u`.`user_id` = ?";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ps.setFloat(1, Math.abs(amount));
+                ps.setInt(2, userId);
+                int affectedRows = ps.executeUpdate();
+                if (!(affectedRows > 0))
+                {
+                    throw new UserException("No user found");
+                }
+                return affectedRows;
+            }
+            catch (SQLException ex)
+            {
+                throw new UserException(ex.getMessage());
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new UserException("Connection to database could not be established");
+        }
+    }
+
+    public float getBalance(int userId) throws UserException
+    {
+        try (Connection connection = database.connect())
+        {
+            String sql = "SELECT `u`.`balance` " +
+                    "FROM `user` AS `u` " +
+                    "WHERE `u`.`user_id` = ?";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ps.setInt(1, userId);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next())
+                {
+                    return rs.getFloat("balance");
+                } else
+                {
+                    throw new UserException("Could not validate user");
+                }
+            }
+            catch (SQLException ex)
+            {
+                throw new UserException(ex.getMessage());
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new UserException("Connection to database could not be established");
+        }
+    }
 }
